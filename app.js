@@ -125,13 +125,20 @@ class EbayLinkLookup {
             const results = [];
             for (let i = 0; i < rows.length; i++) {
                 const row = rows[i];
-                if (row[this.searchColumn] && this.extractEbayId(this.normalizeUrl(row[this.searchColumn])).includes(this.extractEbayId(this.normalizeUrl(ebayLink)))) {
+
+                const sheetLink = this.extractEbayId(this.normalizeUrl(row[this.searchColumn]));
+                const inputLink = this.extractEbayId(this.normalizeUrl(ebayLink));
+                if (sheetLink.includes(inputLink) || inputLink.includes(sheetLink)) {
                     const result = {
                         name: row[0] || 'N/A',
                         id: row[1] || 'N/A',
                         variation: row[2] || 'N/A',
                         ebay: row[3] || 'N/A'
                     };
+                    results.push(result);
+                }
+
+            };
                     results.push(result);
                 }
             }
