@@ -105,8 +105,9 @@ class EbayLinkLookup {
     }
 
     isValidEbayLink(link) {
-        const ebayPattern = /^https?:\/\/(www\.)?ebay\.(com|co\.uk|de|fr|it|es|ca|com\.au|ie|at|be|ch|nl|pl|se|in|ph|sg|my|th|vn|hk|tw|co\.kr|co\.jp|cn|ru|ua|bg|cz|dk|ee|fi|gr|hr|hu|lt|lv|no|pt|ro|si|sk|tr|com\.br|com\.mx|com\.ar|com\.co|com\.pe|com\.uy|com\.ve|com\.do|com\.gt|com\.hn|com\.ni|com\.pa|com\.sv|com\.cr|com\.bz|com\.jm|com\.tt|com\.bb|com\.ag|com\.lc|com\.gd|com\.vc|com\.dm|com\.kn|com\.ms|com\.vg|com\.ai|com\.tc|com\.bs|com\.ky|com\.bm|com\.pr|com\.vi|com\.as|com\.gu|com\.mp|com\.mh|com\.fm|com\.pw|com\.ki|com\.nr|com\.nu|com\.ck|com\.fj|com\.to|com\.tv|com\.vu|com\.ws|com\.sb|com\.nc|com\.wf|com\.pf|com\.tf|com\.re|com\.yt|com\.pm|com\.bl|com\.mf|com\.gp|com\.mq|com\.gf|com\.sr|com\.gy|com\.fk|com\.gs|com\.sh|com\.ac|com\.ta|com\.io|com\.cc|com\.cx|com\.nf|com\.hm|com\.aq)\//i;
-        return ebayPattern.test(link);
+        const urlPattern = /^(https?:\/\/)?(www\.)?ebay\.(com|co\.uk|ca|com\.au|de|fr|it|es|nl)\/itm\/\d+/;
+        const idPattern = /^\d{8,20}$/;
+        return urlPattern.test(link) || idPattern.test(link);
     }
 
     async searchInSheet(ebayLink) {
