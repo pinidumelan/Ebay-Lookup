@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eBay Link Lookup - Modern Interface</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="background-gradient"></div>
+        
+        <header class="header">
+            <div class="container">
+                <h1 class="title">eBay Link Lookup</h1>
+                <p class="subtitle">Enter an eBay link to search for product information</p>
+            </div>
+        </header>
+
+        <main class="main">
+            <div class="container">
+                <div class="search-section">
+                    <div class="search-card">
+                        <div class="search-form">
+                            <div class="form-group">
+                                <label for="ebayLink" class="form-label sr-only">eBay Link</label>
+                                <input 
+                                    type="url" 
+                                    id="ebayLink" 
+                                    class="form-control search-input" 
+                                    placeholder="Paste your eBay link here..."
+                                    autocomplete="url"
+                                    aria-describedby="search-help"
+                                >
+                                <div id="search-help" class="help-text">Enter a valid eBay product link to search</div>
+                            </div>
+                            <button type="button" id="searchBtn" class="btn btn--primary search-btn">
+                                <span class="btn-text">Search</span>
+                                <div class="loading-spinner hidden" aria-hidden="true">
+                                    <div class="spinner"></div>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-section">
+                    <div id="errorMessage" class="error-card hidden" role="alert">
+                        <div class="error-icon">⚠️</div>
+                        <div class="error-content">
+                            <h3 class="error-title">Search Failed</h3>
+                            <p class="error-text"></p>
+                        </div>
+                    </div>
+
+                    <div id="noResults" class="no-results-card hidden">
+                        <div class="no-results-icon">🔍</div>
+                        <div class="no-results-content">
+                            <h3 class="no-results-title">No Results Found</h3>
+                            <p class="no-results-text">We couldn't find any information for this eBay link. Please check the link and try again.</p>
+                        </div>
+                    </div>
+
+                    <div id="resultsContainer" class="results-container hidden">
+                        <h2 class="results-title">Search Results</h2>
+                        <div class="results-grid" id="resultsGrid">
+                            <!-- Results will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p class="footer-text">&copy; 2025 eBay Link Lookup Tool</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
