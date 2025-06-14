@@ -51,7 +51,10 @@ class EbayLinkLookup {
     }
 
     async handleSearch() {
-        const ebayLink = this.searchInput.value.trim();
+        let ebayLink = this.ebayLinkInput.value.trim();
+        if (/^\d{8,20}$/.test(ebayLink)) {
+            ebayLink = `https://www.ebay.com/itm/${ebayLink}`;
+        }
         
         if (!ebayLink) {
             this.showError('Please enter an eBay link');
